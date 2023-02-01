@@ -6,6 +6,9 @@ import axios from 'axios'
 import type { PokemonInterface } from './interfaces/index'
 
 const pokemons = ref<PokemonInterface[]>([])
+const filter = ref({
+  search: ''
+})
 
 watchEffect(() => {
   console.log(pokemons.value)
@@ -27,9 +30,9 @@ onMounted(async () => {
 
 </script>
 <template>
-  <Navbar></Navbar> 
+  <Navbar @search-term-changed="(value) =>(filter.search = value)"/> 
   <div class="bg-gradient-to-l from-blue-300 to-blue-700">
-    <div class="flex flex-col space-y-2 items-center justify-center">
+    <div class="grid grid-cols-3 gap-4 px-2 py-2 m-4">
       <PokemonCard v-for="pokemon in pokemons" :pokemon="pokemon"/>
     </div>
   </div>

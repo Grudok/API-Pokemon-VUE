@@ -24,4 +24,13 @@ export interface PokemonInterface  {
             name: string; // stat
         };
     }>;
+    species: {
+        name: string; // species
+        flavor_text_entries: Array<{
+            flavor_text: string; // flavor_text
+            language: {
+                name: string; // language
+            };
+        }>;
+    };
 }
